@@ -65,7 +65,7 @@ topMenuEl.addEventListener("click", function(e) {
   console.log(e.target.textContent);
 
   // task 5.3
-  if (e.target.classList.contains("active")) {
+  if (e.target.classList.contains("active")) { // if we click again on the same link that is active
     e.target.classList.remove("active");
     showingSubMenu = false;
     subMenuEl.style.top = "0";
@@ -73,35 +73,35 @@ topMenuEl.addEventListener("click", function(e) {
   }
 
   // task 5.4
-  for (const link of topMenuLinks) {
+  for (const link of topMenuLinks) { // if we click on a different link than the one that is active
     link.classList.remove("active");
   }
 
   // task 5.5
-  e.target.classList.add("active");
+  e.target.classList.add("active"); // add active class to the link that was clicked
 
   // task 5.6
-  showingSubMenu = menuLinks.find(link => link.text === e.target.textContent).subLinks ? true : false;
+  showingSubMenu = menuLinks.find(link => link.text === e.target.textContent).subLinks ? true : false; // if the link that was clicked has sublinks, set showingSubMenu to true, otherwise set it to false (looking at you about page)
   
   // console.log(showingSubMenu);
 
   // task 5.7
   if (showingSubMenu) {
-    buildSubMenu(menuLinks.find(link => link.text === e.target.textContent).subLinks);
-    subMenuEl.style.top = "100%";
+    buildSubMenu(menuLinks.find(link => link.text === e.target.textContent).subLinks); 
+    subMenuEl.style.top = "100%"; // show the sub menu
   }
   else { // about page
-    subMenuEl.style.top = "0";
-    mainEl.innerHTML = "<h1>about</h1>";
+    subMenuEl.style.top = "0"; // hide the sub menu
+    mainEl.innerHTML = "<h1>about</h1>"; // show the about page
   }
 
 });
 
 // task 5.8
 function buildSubMenu(subLinks) {
-  subMenuEl.innerHTML = "";
-  for (const link of subLinks) {
-    const linkEl = document.createElement("a");
+  subMenuEl.innerHTML = ""; // clear the sub menu
+  for (const link of subLinks) { 
+    const linkEl = document.createElement("a"); 
     linkEl.setAttribute("href", link.href);
     linkEl.textContent = link.text;
     subMenuEl.appendChild(linkEl);
@@ -124,7 +124,7 @@ subMenuEl.addEventListener("click", function(e) {
   }
 
   // task 6.3
-  mainEl.innerHTML = `<h1>${e.target.textContent}</h1>`
+  mainEl.innerHTML = `<h1>${e.target.textContent}</h1>` 
 
 });
 
